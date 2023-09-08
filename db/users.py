@@ -15,7 +15,7 @@ db = LocalProxy(get_db)
 def get_all_users():
     try:
         response = json_util.dumps(db.users.find({}))
-        return response
+        return { "users": response }
     except:
         return { "status": "error" }
 

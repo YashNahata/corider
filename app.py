@@ -1,14 +1,17 @@
 from flask import Flask
 from flask_cors import CORS
 import os
-from api import users
+from api.users import Users, AllUsers
+from flask_restful import Api
 
 app = Flask(__name__)
 app.app_context().push()
 CORS(app)
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
-app.register_blueprint(users.users_api, url_prefix="/users")
+api = Api(app)
+api.add_resource(AllUsers, '/users/', '/users/')
+api.add_resource(Users, '/user/', '/user/<string:user_id>')
 
 if __name__ == '__main__':
     with app.app_context():
