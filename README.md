@@ -1,4 +1,9 @@
-You can clone & create this repo with the following commands -
+Run locally using Docker - 
+```bash
+docker run -p 5000:5000 -d docker-flask-app
+```
+
+Or you can clone & create this repo with the following commands -
 
 First, create virtual environment using :
 ```bash
